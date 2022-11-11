@@ -5,7 +5,7 @@ from profiles_api import serializers
 
 class HelloApiView(APIView):
     """Test API View"""
-    serializers_class = serializers.HelloSerializer
+    serializer_class = serializers.HelloSerializer
 
     def get(self, request, format = None):
         """Returns a list of APIView features"""
@@ -20,7 +20,7 @@ class HelloApiView(APIView):
 
     def post(self, request):
         """Create a hello message with our name"""
-        serializer = self.serializers_class(data = request.data)
+        serializer = self.serializer_class(data = request.data)
 
         if serializer.is_valid():
             name = serializer.validated_data.get('name')
@@ -28,6 +28,6 @@ class HelloApiView(APIView):
             return Response({'message': message})
         else:
             return Response(
-                serializer.errors, 
+                serializer.errors,
                 status = status.HTTP_400_BAD_REQUEST
             )
