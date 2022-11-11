@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER ghl12078@gmail.com
 RUN apt-get -y update
 # 2. install python
-RUN apt-get -y install python3-venv zip vim
+RUN apt-get -y install python3-venv zip
 # 3. Copy Source Code
 COPY . /root
 RUN python3 -m venv ~/env
